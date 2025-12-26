@@ -1,0 +1,31 @@
+package ru.otus.remotedesktop.server;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+
+public class ServerApp {
+    private static final int DEFAULT_PORT = 5900;
+
+    public static void main(String[] args) {
+        int port = DEFAULT_PORT;
+        if (args.length > 0) {
+            try {
+                port = Integer.parseInt(args[0]);
+            } catch (NumberFormatException e) {
+                System.out.println("неверный порт" + DEFAULT_PORT);
+            }
+        }
+
+        System.out.println("Запуск сервера на порту " + port);
+
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            System.out.println("Сервер запущен. Ожидание подключений ");
+
+            while (true) {
+                new ConnectionHandler(serverSocket.accept()).start();
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка сервера " + e.getMessage());
+        }
+    }
+}
