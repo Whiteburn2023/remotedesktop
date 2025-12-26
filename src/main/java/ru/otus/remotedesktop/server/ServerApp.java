@@ -1,5 +1,6 @@
 package ru.otus.remotedesktop.server;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.ServerSocket;
 
@@ -24,7 +25,7 @@ public class ServerApp {
             while (true) {
                 new ConnectionHandler(serverSocket.accept()).start();
             }
-        } catch (IOException e) {
+        } catch (IOException | AWTException e) {
             System.err.println("Ошибка сервера " + e.getMessage());
         }
     }
