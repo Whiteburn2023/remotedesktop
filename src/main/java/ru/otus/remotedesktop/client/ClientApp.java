@@ -1,19 +1,19 @@
 package ru.otus.remotedesktop.client;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class ClientApp extends Application {
     @Override
-    public void start(Stage primaryStage){
-        Label label = new Label("Remote Desktop Client\nТестовое окно");
-        StackPane root = new StackPane(label);
-        Scene scene = new Scene(root, 400, 300);
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/client.fxml"));
+        Parent root = loader.load();
+
         primaryStage.setTitle("Remote Desktop Assistant (Client)");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.show();
     }
 
