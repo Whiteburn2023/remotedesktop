@@ -31,7 +31,7 @@ public class ClientController {
     public void initialize() {
         screenView.setFocusTraversable(true); //фокус, ловим события клавиатуры
 
-        hostField.setText("localhost");
+        hostField.setText("192.168.1.104");  //hostField.setText("localhost");
         portField.setText("5900");
         usernameField.setText("admin");
         passwordField.setText("password");

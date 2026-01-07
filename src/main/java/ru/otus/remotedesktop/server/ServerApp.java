@@ -17,16 +17,16 @@ public class ServerApp {
             }
         }
 
-        System.out.println("Запуск сервера на порту " + port);
+        System.out.println("запуск сервера на порту " + port);
 
         try (ServerSocket serverSocket = new ServerSocket(port)) {
-            System.out.println("Сервер запущен. Ожидание подключений ");
+            System.out.println("сервер запущен. ждем подключения ");
 
             while (true) {
                 new ConnectionHandler(serverSocket.accept()).start();
             }
         } catch (IOException | AWTException e) {
-            System.err.println("Ошибка сервера " + e.getMessage());
+            System.err.println("ошибка сервера " + e.getMessage());
         }
     }
 }

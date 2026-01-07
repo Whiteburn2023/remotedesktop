@@ -73,11 +73,11 @@ public class InputExecutor {
      * 1 - левая, 2 - средняя, 3 - правая.
      */
     private int getMouseButtonMask(int button) {
-        switch (button) {
-            case 1: return InputEvent.BUTTON1_DOWN_MASK;
-            case 2: return InputEvent.BUTTON2_DOWN_MASK;
-            case 3: return InputEvent.BUTTON3_DOWN_MASK;
-            default: return InputEvent.BUTTON1_DOWN_MASK;
-        }
+        return switch (button) {
+            case 1 -> InputEvent.BUTTON1_DOWN_MASK;
+            case 2 -> InputEvent.BUTTON2_DOWN_MASK;
+            case 3 -> InputEvent.BUTTON3_DOWN_MASK;
+            default -> InputEvent.BUTTON1_DOWN_MASK;
+        };
     }
 }
