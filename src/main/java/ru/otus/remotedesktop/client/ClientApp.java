@@ -12,7 +12,7 @@ public class ClientApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/client.fxml"));
         Parent root = loader.load();
 
-        primaryStage.setTitle("Remote Desktop Assistant (Client)");
+        primaryStage.setTitle("подключаемся к удаленному столу");
         primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.show();
     }
