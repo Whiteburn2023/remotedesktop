@@ -1,2 +1,4 @@
 2026-01-08 14:25:18.230 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
 2026-01-08 14:25:18.234 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-08 17:06:44.746 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-08 17:06:44.749 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения

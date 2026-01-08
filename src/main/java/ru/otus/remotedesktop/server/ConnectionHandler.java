@@ -4,6 +4,9 @@ import ru.otus.remotedesktop.common.AuthRequest;
 import ru.otus.remotedesktop.common.Command;
 import ru.otus.remotedesktop.common.ScreenFrame;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.awt.*;
 import java.io.EOFException;
 import java.io.IOException;
@@ -13,6 +16,7 @@ import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ConnectionHandler extends Thread {
+    private static final Logger logger = LoggerFactory.getLogger(ConnectionHandler.class);
     private final Socket clientSocket;
     private final ScreenCapturer capturer;
     private final InputExecutor inputExecutor;
@@ -53,7 +57,7 @@ public class ConnectionHandler extends Thread {
             senderThread.join(1000);
 
         } catch (Exception e) {
-            System.err.println("ошибка обработки подключения " + e.getMessage());
+            logger.error("ошибка обработки подключения {}", e.getMessage()); //System.err.println("ошибка обработки подключения " + e.getMessage());
         } finally {
             closeConnection();
         }
@@ -75,7 +79,7 @@ public class ConnectionHandler extends Thread {
             authenticated = success;
             return success;
         } catch (Exception e) {
-            System.err.println("ошибка авторизации " + e.getMessage());
+            logger.error("ошибка авторизации {}", e.getMessage());  //System.err.println("ошибка авторизации " + e.getMessage());
             return false;
         }
     }
@@ -93,7 +97,7 @@ public class ConnectionHandler extends Thread {
                 Thread.sleep(50);
             }
         } catch (Exception e) {
-            System.err.println("ошибка отправки кадров " + e.getMessage());
+            logger.error("ошибка отправки кадров {}", e.getMessage()); // System.err.println("ошибка отправки кадров " + e.getMessage());
             running.set(false);
         }
     }
@@ -117,9 +121,9 @@ public class ConnectionHandler extends Thread {
                 }
             }
         } catch (EOFException e) {
-            System.out.println("клиент отключился " + clientSocket.getInetAddress());
+            logger.info("ошибка приема команд {}", clientSocket.getInetAddress()); // System.out.println("клиент отключился " + clientSocket.getInetAddress());
         } catch (Exception e) {
-            System.err.println("ошибка приема команд " + e.getMessage());
+            logger.error("ошибка приема команд {}", e.getMessage()); // System.err.println("ошибка приема команд " + e.getMessage());
         }
     }
 
@@ -137,7 +141,7 @@ public class ConnectionHandler extends Thread {
                 clientSocket.close();
             }
         } catch (IOException e) {
-            System.err.println("ошибка при закрытии соединения " + e.getMessage());
+            logger.error("ошибка при закрытии соединения {}", e.getMessage()); // System.err.println("ошибка при закрытии соединения " + e.getMessage());
         }
         System.out.println("подключение закрыто " + clientSocket.getInetAddress());
     }

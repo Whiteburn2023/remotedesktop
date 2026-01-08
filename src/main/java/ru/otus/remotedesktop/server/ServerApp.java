@@ -34,7 +34,7 @@ public class ServerApp {
         } catch (IOException | AWTException e) {
             logger.error("критическая ошибка сервера на порту {}: {}", port, e.getMessage(), e);    //System.err.println("ошибка сервера " + e.getMessage());
         } catch (Exception e) {
-            logger.error("неожиданная ошибка в работе сервера", e);
+            logger.error("неожиданная ошибка в работе сервера ", e);
         }
     }
 
