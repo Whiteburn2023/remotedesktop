@@ -180,17 +180,27 @@ public class ClientController {
     }
 
     private int getMouseButton(MouseEvent event) {
-        if (event.isPrimaryButtonDown()) return 1; //левая
-        if (event.isMiddleButtonDown()) return 2;
-        if (event.isSecondaryButtonDown()) return 3; //правая
+        MouseButton button = event.getButton();
+        if (button == MouseButton.PRIMARY) return 1;
+        if (button == MouseButton.MIDDLE) return 2;
+        if (button == MouseButton.SECONDARY) return 3;
+
+//        if (event.isPrimaryButtonDown()) return 1; //левая
+//        if (event.isMiddleButtonDown()) return 2;
+//        if (event.isSecondaryButtonDown()) return 3; //правая
         return 1;
     }
 
     /** Для логирования mouse */
     private String getMouseButtonName(MouseEvent event) {
-        if (event.isPrimaryButtonDown()) return "LEFT";
-        if (event.isMiddleButtonDown()) return  "MIDDLE";
-        if (event.isSecondaryButtonDown()) return "RIGHT";
+        MouseButton button = event.getButton();
+        if (button == MouseButton.PRIMARY) return "LEFT";
+        if (button == MouseButton.MIDDLE) return "MIDDLE";
+        if (button == MouseButton.SECONDARY) return "RIGHT";
+
+//        if (event.isPrimaryButtonDown()) return "LEFT";
+//        if (event.isMiddleButtonDown()) return  "MIDDLE";
+//        if (event.isSecondaryButtonDown()) return "RIGHT";
         return "UNKNOWN";
     }
 
