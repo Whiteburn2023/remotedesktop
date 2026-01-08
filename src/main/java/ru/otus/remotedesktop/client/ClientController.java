@@ -12,6 +12,12 @@ import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class ClientController {
     @FXML private BorderPane mainPane;
@@ -27,9 +33,19 @@ public class ClientController {
     private double scaleX = 1.0;
     private double scaleY = 1.0;
 
+    /** Для логирования mouse */
+    private PrintWriter logWriter;
+    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
+    private final AtomicInteger eventCounter = new AtomicInteger(0);
+    private String logFileName;
+
     @FXML
     public void initialize() {
         screenView.setFocusTraversable(true); //фокус, ловим события клавиатуры
+
+        screenView.setOnMouseClicked(event -> {
+            screenView.requestFocus();
+        });
 
         hostField.setText("192.168.1.104");  //hostField.setText("localhost");
         portField.setText("5900");
@@ -37,7 +53,41 @@ public class ClientController {
         passwordField.setText("password");
 
         statusLabel.setText("отключено");
+
+        /** Для логирования mouse */
+        createLogFile();
+        logMessage("== MOUSE ==");
     }
+        /** Для логирования mouse */
+        private void createLogFile() {
+            try {
+                LocalDateTime now = LocalDateTime.now();
+                logFileName = String.format("mouse_log_%s.txt", now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss")));
+                logWriter = new PrintWriter(new FileWriter(logFileName, true));
+                logWriter.println("=".repeat(60));
+                logWriter.printf("начало:  %s%n", now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                logWriter.println("=".repeat(60));
+                logWriter.flush();
+                System.out.println("файл логов " + logFileName);
+            } catch (Exception e) {
+                System.err.println("ошибка создания файла" + e.getMessage());
+            }
+
+        }
+    /** Для логирования mouse */
+
+    private void logMessage(String message) {
+        String timestamp = LocalDateTime.now().format(timeFormatter);
+        String logEntry = String.format("[%s] %s", timestamp, message);
+
+        System.out.println(logEntry);
+
+        if (logWriter != null) {
+            logWriter.println(logEntry);
+            logWriter.flush();
+        }
+    }
+
 
     @FXML
     private void handleConnect() {
@@ -101,6 +151,15 @@ public class ClientController {
         if (connectionManager != null && connectionManager.isConnected()){
             int button = getMouseButton(event);
             connectionManager.sendCommand(Command.MOUSE_PRESS, button);
+
+
+            /** Для логирования mouse */
+            int eventNum = eventCounter.incrementAndGet();
+            String buttonName = getMouseButtonName(event);
+            logMessage(String.format("#%04d MOUSE PRESS: %s (code=%d) at local(%d,%d) remote(%d,%d)",
+                    eventNum, buttonName, button,
+                    (int)event.getX(), (int)event.getY(),
+                    (int)(event.getX() * scaleX), (int)(event.getY() * scaleY)));
         }
     }
 
@@ -126,6 +185,15 @@ public class ClientController {
         if (event.isSecondaryButtonDown()) return 3; //правая
         return 1;
     }
+
+    /** Для логирования mouse */
+    private String getMouseButtonName(MouseEvent event) {
+        if (event.isPrimaryButtonDown()) return "LEFT";
+        if (event.isMiddleButtonDown()) return  "MIDDLE";
+        if (event.isSecondaryButtonDown()) return "RIGHT";
+        return "UNKNOWN";
+    }
+
 
     /** keyboard */
 
