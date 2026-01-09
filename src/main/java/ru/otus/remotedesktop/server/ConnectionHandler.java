@@ -26,6 +26,8 @@ public class ConnectionHandler extends Thread {
     private ObjectInputStream input;
     private boolean authenticated = false;
 
+    private int previousFrameSize = 0;
+
     public ConnectionHandler(Socket socket) throws AWTException {
         this.clientSocket = socket;
         this.capturer = new ScreenCapturer();
@@ -34,7 +36,7 @@ public class ConnectionHandler extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Новое подключение " + clientSocket.getInetAddress());
+        logger.info("Новое подключение от {}", clientSocket.getInetAddress());
 
         try {
             output = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -42,11 +44,11 @@ public class ConnectionHandler extends Thread {
             input = new ObjectInputStream(clientSocket.getInputStream());
 
             if (!authenticate()) {
-                System.out.println("авторизация не пройдена " + clientSocket.getInetAddress());
+                logger.warn("Авторизация не пройдена для {}", clientSocket.getInetAddress());
                 return;
             }
 
-            System.out.println("клиент " +clientSocket.getInetAddress() + " авторизован");
+            logger.info("Клиент {} авторизован", clientSocket.getInetAddress());
 
             Thread senderThread = new Thread(this::sendScreenFrames);
             senderThread.start();
@@ -57,7 +59,7 @@ public class ConnectionHandler extends Thread {
             senderThread.join(1000);
 
         } catch (Exception e) {
-            logger.error("ошибка обработки подключения {}", e.getMessage()); //System.err.println("ошибка обработки подключения " + e.getMessage());
+            logger.error("ошибка обработки подключения", e); //System.err.println("ошибка обработки подключения " + e.getMessage());
         } finally {
             closeConnection();
         }
@@ -94,6 +96,8 @@ public class ConnectionHandler extends Thread {
                     output.flush();
                 }
 
+                previousFrameSize = frame.getImageData().length;
+
                 Thread.sleep(50);
             }
         } catch (Exception e) {
@@ -117,11 +121,11 @@ public class ConnectionHandler extends Thread {
                     }
                     inputExecutor.executeCommand(cmd, params);
                 } else if (obj instanceof String) {
-                    System.out.println("сообщение от клиента " + obj);
+                    logger.info("Сообщение от клиента: {}", obj);
                 }
             }
         } catch (EOFException e) {
-            logger.info("ошибка приема команд {}", clientSocket.getInetAddress()); // System.out.println("клиент отключился " + clientSocket.getInetAddress());
+            logger.info("Клиент отключился{}", clientSocket.getInetAddress()); // System.out.println("клиент отключился " + clientSocket.getInetAddress());
         } catch (Exception e) {
             logger.error("ошибка приема команд {}", e.getMessage()); // System.err.println("ошибка приема команд " + e.getMessage());
         }
@@ -143,6 +147,6 @@ public class ConnectionHandler extends Thread {
         } catch (IOException e) {
             logger.error("ошибка при закрытии соединения {}", e.getMessage()); // System.err.println("ошибка при закрытии соединения " + e.getMessage());
         }
-        System.out.println("подключение закрыто " + clientSocket.getInetAddress());
+        logger.info("подключение закрыто: {}", clientSocket.getInetAddress());
     }
 }

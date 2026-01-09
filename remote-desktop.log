@@ -7,3 +7,5 @@
 2026-01-08 20:34:28.421 [main] INFO  r.o.remotedesktop.server.ServerApp - новое подключение принято. соединение
 2026-01-08 20:34:28.422 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
 2026-01-08 20:35:06.232 [Thread-0] INFO  r.o.r.server.ConnectionHandler - ошибка приема команд /192.168.1.104
+2026-01-09 18:59:01.113 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-09 18:59:01.116 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
