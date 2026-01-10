@@ -12,6 +12,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.0</junit.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <javafx.version>17.0.2</javafx.version>
     </properties>
 
     <dependencies>
@@ -26,17 +29,19 @@
             <version>17.0.2</version>
         </dependency>
 
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.5.21</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.bytedeco/javacv-platform -->
         <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv-platform</artifactId>
-            <version>1.5.12</version>
+            <groupId>org.opencv</groupId>
+            <artifactId>opencv</artifactId>
+            <version>4.8.1</version>
+            <scope>system</scope>
+            <systemPath>C:/OTUS/RemoteDesktop/opencv/build/java/opencv-481.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -73,12 +78,6 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>ru.otus.remotedesktop.client.ClientApp</mainClass>
-                            <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
-                            <noManPages>true</noManPages>
-                            <stripDebug>true</stripDebug>
-                            <noHeaderFiles>true</noHeaderFiles>
                         </configuration>
                     </execution>
                 </executions>

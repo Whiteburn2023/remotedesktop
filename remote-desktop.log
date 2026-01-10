@@ -9,3 +9,29 @@
 2026-01-08 20:35:06.232 [Thread-0] INFO  r.o.r.server.ConnectionHandler - ошибка приема команд /192.168.1.104
 2026-01-09 18:59:01.113 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
 2026-01-09 18:59:01.116 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-09 19:28:50.277 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-09 19:28:50.281 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-09 20:45:58.234 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-09 20:45:58.237 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-09 23:37:58.456 [main] INFO  r.o.r.server.OpenCVLoader - Successfully loaded OpenCV from: C:\OTUS\RemoteDesktop\opencv\build\java\x64\opencv_java481.dll
+2026-01-09 23:37:58.461 [main] INFO  r.o.r.server.OpenCVLoader - OpenCV version: 4.8.1
+2026-01-09 23:38:56.451 [main] INFO  r.o.r.server.OpenCVLoader - Successfully loaded OpenCV from: C:\OTUS\RemoteDesktop\opencv\build\java\x64\opencv_java481.dll
+2026-01-09 23:38:56.455 [main] INFO  r.o.r.server.OpenCVLoader - OpenCV version: 4.8.1
+2026-01-10 14:57:36.339 [main] INFO  r.o.r.server.OpenCVLoader - Successfully loaded OpenCV from: C:\OTUS\RemoteDesktop\opencv\build\java\x64\opencv_java481.dll
+2026-01-10 14:57:36.345 [main] INFO  r.o.r.server.OpenCVLoader - OpenCV version: 4.8.1
+2026-01-10 14:57:41.665 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 14:57:41.668 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:19:39.747 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:19:39.750 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:20:34.015 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:20:34.018 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:23:16.421 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:23:16.424 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:27:44.759 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:27:44.762 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:30:30.882 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:30:30.885 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:37:04.755 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:37:04.758 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 15:38:12.328 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 15:38:12.331 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
