@@ -26,8 +26,6 @@ public class ConnectionHandler extends Thread {
     private ObjectInputStream input;
     private boolean authenticated = false;
 
-    private int previousFrameSize = 0;
-
     public ConnectionHandler(Socket socket) throws AWTException {
         this.clientSocket = socket;
         this.capturer = new ScreenCapturer();
@@ -59,7 +57,7 @@ public class ConnectionHandler extends Thread {
             senderThread.join(1000);
 
         } catch (Exception e) {
-            logger.error("ошибка обработки подключения", e); //System.err.println("ошибка обработки подключения " + e.getMessage());
+            logger.error("ошибка обработки подключения", e);
         } finally {
             closeConnection();
         }
@@ -81,7 +79,7 @@ public class ConnectionHandler extends Thread {
             authenticated = success;
             return success;
         } catch (Exception e) {
-            logger.error("ошибка авторизации {}", e.getMessage());  //System.err.println("ошибка авторизации " + e.getMessage());
+            logger.error("ошибка авторизации {}", e.getMessage());
             return false;
         }
     }
@@ -96,12 +94,10 @@ public class ConnectionHandler extends Thread {
                     output.flush();
                 }
 
-                previousFrameSize = frame.getImageData().length;
-
                 Thread.sleep(50);
             }
         } catch (Exception e) {
-            logger.error("ошибка отправки кадров {}", e.getMessage()); // System.err.println("ошибка отправки кадров " + e.getMessage());
+            logger.error("ошибка отправки кадров {}", e.getMessage());
             running.set(false);
         }
     }
@@ -125,9 +121,9 @@ public class ConnectionHandler extends Thread {
                 }
             }
         } catch (EOFException e) {
-            logger.info("Клиент отключился{}", clientSocket.getInetAddress()); // System.out.println("клиент отключился " + clientSocket.getInetAddress());
+            logger.info("Клиент отключился{}", clientSocket.getInetAddress());
         } catch (Exception e) {
-            logger.error("ошибка приема команд {}", e.getMessage()); // System.err.println("ошибка приема команд " + e.getMessage());
+            logger.error("ошибка приема команд {}", e.getMessage());
         }
     }
 

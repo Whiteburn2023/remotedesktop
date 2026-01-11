@@ -7,8 +7,8 @@ public class SimpleTestOpenCV {
         System.out.println("=== Тест локального OpenCV ===");
 
         try {
-            // Загружаем OpenCV
-            OpenCVLoader.load();
+
+            OpenCVLoader.load(); // Загружаем OpenCV
 
             System.out.println("OpenCV version: " + OpenCVLoader.getVersion());
 

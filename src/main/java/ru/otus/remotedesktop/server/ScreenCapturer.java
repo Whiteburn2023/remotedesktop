@@ -18,72 +18,47 @@ public class ScreenCapturer {
     private static final Logger logger = LoggerFactory.getLogger(ScreenCapturer.class);
     private final Robot robot;
     private final Rectangle screenRect;
-    private boolean openCVAvailable = false;
 
     static {
         // Загружаем OpenCV при загрузке класса
-        loadOpenCV();
+        OpenCVLoader.load();
     }
 
     public ScreenCapturer() throws AWTException {
         this.robot = new Robot();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-
-    }
-
-    private static void loadOpenCV() {
-        try {
-            // Пробуем разные пути к DLL
-            String[] possiblePaths = {
-                    System.getProperty("user.dir") + "\\opencv\\build\\java\\x64\\opencv_java481.dll",
-                    System.getProperty("user.dir") + "\\opencv\\build\\x64\\vc16\\bin\\opencv_java481.dll",
-                    "C:\\OTUS\\RemoteDesktop\\opencv\\build\\java\\x64\\opencv_java481.dll"
-            };
-
-            boolean loaded = false;
-            for (String path : possiblePaths) {
-                try {
-                    System.load(path);
-                    logger.info("OpenCV loaded from: {}", path);
-                    loaded = true;
-                    break;
-                } catch (UnsatisfiedLinkError e) {
-                    logger.debug("Failed to load from {}: {}", path, e.getMessage());
-                }
-            }
-
-            if (!loaded) {
-                // Пробуем загрузить из java.library.path
-                System.loadLibrary("opencv_java481");
-                logger.info("OpenCV loaded from system library path");
-            }
-
-            // Проверяем, что OpenCV загружен корректно
-            String version = org.opencv.core.Core.VERSION;
-            logger.info("OpenCV version: {}", version);
-
-        } catch (UnsatisfiedLinkError e) {
-            logger.error("Failed to load OpenCV: {}", e.getMessage());
-            throw new RuntimeException("OpenCV not available. Please install OpenCV 4.8.1", e);
-        }
+        this.screenRect = new Rectangle(screenSize);
+        logger.info("ScreenCapturer initialized with screen size: {}x{}", screenRect.width, screenRect.height);
     }
 
     public ScreenFrame captureFrame() throws IOException {
         long startTime = System.currentTimeMillis();
 
-        BufferedImage screenshot = robot.createScreenCapture(screenRect);   //захват экрана
+        // Захват экрана
+        BufferedImage screenshot = robot.createScreenCapture(screenRect);
 
-        Point cursor = MouseInfo.getPointerInfo().getLocation();            // получение позиции курсора
+        // Получение позиции курсора
+        Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-        byte[] compressedImage = compressWithOpenCV(screenshot);
+        byte[] compressedImage;
+
+        // Используем OpenCV если доступен, иначе ImageIO
+        if (OpenCVLoader.isLoaded()) {
+            try {
+                compressedImage = compressWithOpenCV(screenshot);
+                logger.debug("Compressed with OpenCV: {} bytes", compressedImage.length);
+            } catch (Exception e) {
+                logger.warn("OpenCV compression failed, using ImageIO fallback: {}", e.getMessage());
+                compressedImage = compressWithImageIO(screenshot);
+            }
+        } else {
+            compressedImage = compressWithImageIO(screenshot);
+        }
 
         long duration = System.currentTimeMillis() - startTime;
-        logger.debug("Frame captured: {}x{} -> {} bytes in {} ms",
-                screenRect.width, screenRect.height,
-                compressedImage.length, duration);
+        logger.debug("Frame captured in {} ms", duration);
 
-        return new ScreenFrame(                                             // создание и возврат кадра
+        return new ScreenFrame(
                 compressedImage,
                 screenRect.width,
                 screenRect.height,
@@ -94,10 +69,10 @@ public class ScreenCapturer {
 
     private byte[] compressWithOpenCV(BufferedImage image) throws IOException {
         try {
-            // Конвертируем BufferedImage в формат, подходящий для OpenCV
+            // Конвертируем BufferedImage в формат BGR для OpenCV
             BufferedImage convertedImage;
 
-            // OpenCV ожидает BGR формат (не RGB!)
+            // OpenCV ожидает BGR формат
             if (image.getType() == BufferedImage.TYPE_3BYTE_BGR) {
                 convertedImage = image;
             } else {
@@ -116,21 +91,19 @@ public class ScreenCapturer {
             byte[] pixels = ((DataBufferByte) convertedImage.getRaster().getDataBuffer()).getData();
 
             // Создаем Mat из байтов
-            // OpenCV использует BGR порядок, высота x ширина x каналы
             org.opencv.core.Mat mat = new org.opencv.core.Mat(
                     convertedImage.getHeight(),
                     convertedImage.getWidth(),
                     org.opencv.core.CvType.CV_8UC3
             );
 
-            // Копируем данные в Mat
+            // Копируем данные
             mat.put(0, 0, pixels);
 
-            // Сжимаем в JPEG с указанием качества
+            // Сжимаем в JPEG
             org.opencv.core.MatOfByte mob = new org.opencv.core.MatOfByte();
             org.opencv.imgcodecs.Imgcodecs.imencode(".jpg", mat, mob);
 
-            // Получаем результат
             byte[] result = mob.toArray();
 
             // Освобождаем ресурсы
@@ -140,10 +113,29 @@ public class ScreenCapturer {
             return result;
 
         } catch (Exception e) {
-            logger.error("OpenCV compression error", e);
-            throw new IOException("Failed to compress image with OpenCV", e);
+            throw new IOException("OpenCV compression error: " + e.getMessage(), e);
         }
     }
 
+    private byte[] compressWithImageIO(BufferedImage image) throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
+        // Используем ImageWriter для лучшего сжатия
+        javax.imageio.ImageWriter writer = javax.imageio.ImageIO.getImageWritersByFormatName("jpg").next();
+        javax.imageio.ImageWriteParam param = writer.getDefaultWriteParam();
+
+        if (param.canWriteCompressed()) {
+            param.setCompressionMode(javax.imageio.ImageWriteParam.MODE_EXPLICIT);
+            param.setCompressionQuality(0.8f); // 80% качество
+        }
+
+        try (javax.imageio.stream.ImageOutputStream ios = javax.imageio.ImageIO.createImageOutputStream(baos)) {
+            writer.setOutput(ios);
+            writer.write(null, new javax.imageio.IIOImage(image, null, null), param);
+        } finally {
+            writer.dispose();
+        }
+
+        return baos.toByteArray();
+    }
 }

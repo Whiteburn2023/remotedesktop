@@ -15,6 +15,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <javafx.version>17.0.2</javafx.version>
+        <opencv.version>4.8.1</opencv.version>
     </properties>
 
     <dependencies>
@@ -29,7 +30,6 @@
             <version>17.0.2</version>
         </dependency>
 
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -39,9 +39,9 @@
         <dependency>
             <groupId>org.opencv</groupId>
             <artifactId>opencv</artifactId>
-            <version>4.8.1</version>
+            <version>${opencv.version}</version>
             <scope>system</scope>
-            <systemPath>C:/OTUS/RemoteDesktop/opencv/build/java/opencv-481.jar</systemPath>
+            <systemPath>${project.basedir}/lib/opencv-481.jar</systemPath>
         </dependency>
 
         <dependency>
@@ -78,9 +78,27 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>ru.otus.remotedesktop.client.ClientApp</mainClass>
+                            <options>
+                                <option>-Djava.library.path=${project.basedir}/lib/native</option>
+                            </options>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>ru.otus.remotedesktop.client.ClientApp</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

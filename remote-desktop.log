@@ -35,3 +35,82 @@
 2026-01-10 15:37:04.758 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
 2026-01-10 15:38:12.328 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
 2026-01-10 15:38:12.331 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-10 16:03:06.186 [main] INFO  r.o.remotedesktop.server.ServerApp - ������ ������� �� ����� 5900
+2026-01-10 16:03:06.198 [main] DEBUG r.o.remotedesktop.server.ServerApp - �������� ������ �����������
+2026-01-10 23:00:35.116 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-10 23:00:35.119 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 15:43:51.441 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 15:43:51.444 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 15:44:40.435 [main] INFO  r.o.r.server.OpenCVLoader - Trying to load OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 15:44:40.435 [main] WARN  r.o.r.server.OpenCVLoader - Library not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 15:44:40.435 [main] WARN  r.o.r.server.OpenCVLoader - Library not found: C:\OTUS\RemoteDesktop\lib\native\opencv_imgproc481.dll
+2026-01-11 15:44:40.435 [main] WARN  r.o.r.server.OpenCVLoader - Library not found: C:\OTUS\RemoteDesktop\lib\native\opencv_imgcodecs481.dll
+2026-01-11 15:44:40.444 [main] DEBUG r.o.r.server.OpenCVLoader - Loaded: opencv_java481.dll
+2026-01-11 15:44:40.447 [main] INFO  r.o.r.server.OpenCVLoader - OpenCV successfully loaded. Version: 4.8.1
+2026-01-11 15:44:40.755 [main] INFO  r.o.r.server.ScreenCapturer - ScreenCapturer initialized with screen size: 1920x1080
+2026-01-11 15:44:40.755 [main] INFO  r.o.remotedesktop.server.ServerApp - новое подключение принято. соединение
+2026-01-11 15:44:40.755 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 15:44:40.755 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Новое подключение от /192.168.1.57
+2026-01-11 15:44:40.773 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Клиент /192.168.1.57 авторизован
+2026-01-11 15:44:40.852 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 243407 bytes
+2026-01-11 15:44:40.852 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 79 ms
+2026-01-11 15:44:40.966 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 243407 bytes
+2026-01-11 15:44:40.967 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 57 ms
+2026-01-11 15:44:41.083 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 303189 bytes
+2026-01-11 15:44:41.083 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 52 ms
+2026-01-11 15:44:41.183 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 319567 bytes
+2026-01-11 15:44:41.183 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 43 ms
+2026-01-11 15:44:41.300 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 323962 bytes
+2026-01-11 15:44:41.300 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 51 ms
+2026-01-11 15:44:41.400 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325164 bytes
+2026-01-11 15:44:41.400 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 41 ms
+2026-01-11 15:44:41.499 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325486 bytes
+2026-01-11 15:44:41.499 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 44 ms
+2026-01-11 15:44:41.616 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325568 bytes
+2026-01-11 15:44:41.616 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 53 ms
+2026-01-11 15:44:41.717 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325542 bytes
+2026-01-11 15:44:41.717 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 46 ms
+2026-01-11 15:44:41.852 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325553 bytes
+2026-01-11 15:44:41.852 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 72 ms
+2026-01-11 15:44:41.950 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325397 bytes
+2026-01-11 15:44:41.950 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 45 ms
+2026-01-11 15:44:42.065 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325574 bytes
+2026-01-11 15:44:42.066 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 52 ms
+2026-01-11 15:44:42.166 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325490 bytes
+2026-01-11 15:44:42.166 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 42 ms
+2026-01-11 15:44:42.283 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325496 bytes
+2026-01-11 15:44:42.283 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 51 ms
+2026-01-11 15:44:42.399 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325397 bytes
+2026-01-11 15:44:42.400 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 57 ms
+2026-01-11 15:44:42.498 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325502 bytes
+2026-01-11 15:44:42.498 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 45 ms
+2026-01-11 15:44:42.617 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325397 bytes
+2026-01-11 15:44:42.617 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 54 ms
+2026-01-11 15:44:42.716 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325397 bytes
+2026-01-11 15:44:42.716 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 44 ms
+2026-01-11 15:44:43.033 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325838 bytes
+2026-01-11 15:44:43.033 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 50 ms
+2026-01-11 15:44:43.132 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325774 bytes
+2026-01-11 15:44:43.132 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 40 ms
+2026-01-11 15:44:43.232 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 325366 bytes
+2026-01-11 15:44:43.232 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 46 ms
+2026-01-11 15:44:43.331 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324736 bytes
+2026-01-11 15:44:43.332 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 38 ms
+2026-01-11 15:44:43.432 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324528 bytes
+2026-01-11 15:44:43.432 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 44 ms
+2026-01-11 15:44:43.547 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324679 bytes
+2026-01-11 15:44:43.548 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 50 ms
+2026-01-11 15:44:43.648 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324600 bytes
+2026-01-11 15:44:43.648 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 42 ms
+2026-01-11 15:44:43.752 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324571 bytes
+2026-01-11 15:44:43.752 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 49 ms
+2026-01-11 15:44:43.848 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324465 bytes
+2026-01-11 15:44:43.848 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 39 ms
+2026-01-11 15:44:43.948 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324679 bytes
+2026-01-11 15:44:43.949 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 47 ms
+2026-01-11 15:44:44.036 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Клиент отключился/192.168.1.57
+2026-01-11 15:44:44.068 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Compressed with OpenCV: 324293 bytes
+2026-01-11 15:44:44.068 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 56 ms
+2026-01-11 15:44:44.069 [Thread-1] ERROR r.o.r.server.ConnectionHandler - ошибка отправки кадров Программа на вашем хост-компьютере разорвала установленное подключение
+2026-01-11 15:44:44.069 [Thread-0] ERROR r.o.r.server.ConnectionHandler - ошибка при закрытии соединения Socket closed
+2026-01-11 15:44:44.069 [Thread-0] INFO  r.o.r.server.ConnectionHandler - подключение закрыто: /192.168.1.57
