@@ -1,27 +1,20 @@
 package ru.otus.remotedesktop.server;
 
-
 import ru.otus.remotedesktop.common.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.awt.event.InputEvent;
 
 public class InputExecutor {
+    private static final Logger logger = LoggerFactory.getLogger(InputExecutor.class);
     private final Robot robot;
 
     public InputExecutor() throws AWTException {
         this.robot = new Robot();
     }
 
-    /**
-     * Выполняет команду с переданными параметрами.
-     * @param command Тип команды (из enum Command)
-     * @param params Параметры команды:
-     *               - Для MOUSE_MOVE: [x, y]
-     *               - Для MOUSE_PRESS/RELEASE: [button]
-     *               - Для KEY_PRESS/RELEASE: [keyCode]
-     *               - Для MOUSE_WHEEL: [wheelAmt]
-     */
     public void executeCommand(Command command, int... params) {
         try {
             switch (command) {
@@ -62,10 +55,10 @@ public class InputExecutor {
                     break;
 
                 default:
-                    System.err.println("неизвестная команда " + command);
+                    logger.warn("неизвестная команда {}", command);
             }
         } catch (IllegalArgumentException e) {
-            System.err.println("ошибка выполнения команды " + command + " " + e.getMessage());
+            logger.error("ошибка выполнения команды {}: {}", command, e.getMessage());
         }
     }
     /**

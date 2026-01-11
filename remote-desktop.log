@@ -114,3 +114,282 @@
 2026-01-11 15:44:44.069 [Thread-1] ERROR r.o.r.server.ConnectionHandler - ошибка отправки кадров Программа на вашем хост-компьютере разорвала установленное подключение
 2026-01-11 15:44:44.069 [Thread-0] ERROR r.o.r.server.ConnectionHandler - ошибка при закрытии соединения Socket closed
 2026-01-11 15:44:44.069 [Thread-0] INFO  r.o.r.server.ConnectionHandler - подключение закрыто: /192.168.1.57
+2026-01-11 15:46:39.362 [main] INFO  r.o.r.server.OpenCVLoader - Trying to load OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 15:46:39.365 [main] WARN  r.o.r.server.OpenCVLoader - Library not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 15:46:39.365 [main] WARN  r.o.r.server.OpenCVLoader - Library not found: C:\OTUS\RemoteDesktop\lib\native\opencv_imgproc481.dll
+2026-01-11 15:46:39.365 [main] WARN  r.o.r.server.OpenCVLoader - Library not found: C:\OTUS\RemoteDesktop\lib\native\opencv_imgcodecs481.dll
+2026-01-11 15:46:39.373 [main] DEBUG r.o.r.server.OpenCVLoader - Loaded: opencv_java481.dll
+2026-01-11 15:46:39.375 [main] INFO  r.o.r.server.OpenCVLoader - OpenCV successfully loaded. Version: 4.8.1
+2026-01-11 16:24:42.584 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 16:24:42.586 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 16:25:16.621 [main] INFO  r.o.r.server.ScreenCapturer - загрузка библиотеки OPENCV: C:\OTUS\RemoteDesktop\lib\native\opencv_java481.dll
+2026-01-11 16:25:16.772 [main] DEBUG r.o.r.server.ScreenCapturer - загрузка библиотеки успешна: opencv_java481.dll
+2026-01-11 16:25:17.026 [main] INFO  r.o.r.server.ScreenCapturer - ScreenCapturer initialized with screen size: 1920x1080
+2026-01-11 16:25:17.027 [main] INFO  r.o.remotedesktop.server.ServerApp - новое подключение принято. соединение
+2026-01-11 16:25:17.027 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 16:25:17.027 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Новое подключение от /192.168.1.57
+2026-01-11 16:25:17.043 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Клиент /192.168.1.57 авторизован
+2026-01-11 16:25:17.085 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 41 мс, размер: 6220800 байт
+2026-01-11 16:25:17.507 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 20 мс, размер: 6220800 байт
+2026-01-11 16:25:17.607 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:17.708 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 32 мс, размер: 6220800 байт
+2026-01-11 16:25:17.823 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 22 мс, размер: 6220800 байт
+2026-01-11 16:25:17.941 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 31 мс, размер: 6220800 байт
+2026-01-11 16:25:18.056 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 22 мс, размер: 6220800 байт
+2026-01-11 16:25:18.156 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:18.274 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 21 мс, размер: 6220800 байт
+2026-01-11 16:25:18.390 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:18.507 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 36 мс, размер: 6220800 байт
+2026-01-11 16:25:18.606 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:18.723 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 33 мс, размер: 6220800 байт
+2026-01-11 16:25:18.823 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:18.924 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 32 мс, размер: 6220800 байт
+2026-01-11 16:25:19.021 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 21 мс, размер: 6220800 байт
+2026-01-11 16:25:19.121 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 26 мс, размер: 6220800 байт
+2026-01-11 16:25:19.221 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 19 мс, размер: 6220800 байт
+2026-01-11 16:25:19.322 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 26 мс, размер: 6220800 байт
+2026-01-11 16:25:19.422 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 19 мс, размер: 6220800 байт
+2026-01-11 16:25:19.521 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 24 мс, размер: 6220800 байт
+2026-01-11 16:25:19.623 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 31 мс, размер: 6220800 байт
+2026-01-11 16:25:19.722 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 20 мс, размер: 6220800 байт
+2026-01-11 16:25:19.822 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 27 мс, размер: 6220800 байт
+2026-01-11 16:25:19.940 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 35 мс, размер: 6220800 байт
+2026-01-11 16:25:20.055 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:20.172 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 34 мс, размер: 6220800 байт
+2026-01-11 16:25:20.289 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 23 мс, размер: 6220800 байт
+2026-01-11 16:25:20.406 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 30 мс, размер: 6220800 байт
+2026-01-11 16:25:20.489 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 19 мс, размер: 6220800 байт
+2026-01-11 16:25:20.606 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 26 мс, размер: 6220800 байт
+2026-01-11 16:25:20.723 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 33 мс, размер: 6220800 байт
+2026-01-11 16:25:20.822 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 23 мс, размер: 6220800 байт
+2026-01-11 16:25:20.939 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 30 мс, размер: 6220800 байт
+2026-01-11 16:25:21.039 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 22 мс, размер: 6220800 байт
+2026-01-11 16:25:21.138 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 27 мс, размер: 6220800 байт
+2026-01-11 16:25:21.256 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 37 мс, размер: 6220800 байт
+2026-01-11 16:25:21.373 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:21.473 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 19 мс, размер: 6220800 байт
+2026-01-11 16:25:21.589 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:21.688 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 18 мс, размер: 6220800 байт
+2026-01-11 16:25:21.805 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:21.923 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 34 мс, размер: 6220800 байт
+2026-01-11 16:25:22.039 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:22.155 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 32 мс, размер: 6220800 байт
+2026-01-11 16:25:22.240 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 22 мс, размер: 6220800 байт
+2026-01-11 16:25:22.357 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 32 мс, размер: 6220800 байт
+2026-01-11 16:25:22.439 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 20 мс, размер: 6220800 байт
+2026-01-11 16:25:22.557 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 29 мс, размер: 6220800 байт
+2026-01-11 16:25:22.654 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 33 мс, размер: 6220800 байт
+2026-01-11 16:25:22.756 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:22.856 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 19 мс, размер: 6220800 байт
+2026-01-11 16:25:22.955 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:23.054 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 30 мс, размер: 6220800 байт
+2026-01-11 16:25:23.156 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:23.256 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 32 мс, размер: 6220800 байт
+2026-01-11 16:25:23.356 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 23 мс, размер: 6220800 байт
+2026-01-11 16:25:23.455 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:23.557 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 22 мс, размер: 6220800 байт
+2026-01-11 16:25:23.654 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 25 мс, размер: 6220800 байт
+2026-01-11 16:25:23.775 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 35 мс, размер: 6220800 байт
+2026-01-11 16:25:23.890 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 26 мс, размер: 6220800 байт
+2026-01-11 16:25:24.008 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 35 мс, размер: 6220800 байт
+2026-01-11 16:25:24.122 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 24 мс, размер: 6220800 байт
+2026-01-11 16:25:24.239 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 31 мс, размер: 6220800 байт
+2026-01-11 16:25:24.356 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 24 мс, размер: 6220800 байт
+2026-01-11 16:25:24.472 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 30 мс, размер: 6220800 байт
+2026-01-11 16:25:24.572 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 22 мс, размер: 6220800 байт
+2026-01-11 16:25:24.672 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 29 мс, размер: 6220800 байт
+2026-01-11 16:25:24.790 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 38 мс, размер: 6220800 байт
+2026-01-11 16:25:24.905 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:25.023 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 38 мс, размер: 6220800 байт
+2026-01-11 16:25:25.156 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 30 мс, размер: 6220800 байт
+2026-01-11 16:25:25.273 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 24 мс, размер: 6220800 байт
+2026-01-11 16:25:25.390 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 31 мс, размер: 6220800 байт
+2026-01-11 16:25:25.490 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 23 мс, размер: 6220800 байт
+2026-01-11 16:25:25.588 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 28 мс, размер: 6220800 байт
+2026-01-11 16:25:25.688 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 34 мс, размер: 6220800 байт
+2026-01-11 16:25:25.773 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 24 мс, размер: 6220800 байт
+2026-01-11 16:25:25.888 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 29 мс, размер: 6220800 байт
+2026-01-11 16:25:25.989 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - картинка захвачена 35 мс, размер: 6220800 байт
+2026-01-11 16:25:26.054 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Клиент отключился/192.168.1.57
+2026-01-11 16:25:26.063 [Thread-0] INFO  r.o.r.server.ConnectionHandler - подключение закрыто: /192.168.1.57
+2026-01-11 16:45:00.082 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 16:45:00.084 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 16:45:13.041 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 16:45:13.048 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 16:45:13.049 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 16:56:59.647 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 16:56:59.650 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 16:57:37.939 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 16:57:38.010 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 16:57:38.010 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 16:59:01.029 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 16:59:01.033 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 16:59:42.989 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 16:59:42.997 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 16:59:42.997 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 17:02:24.499 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 17:02:24.502 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 17:02:36.068 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 17:02:36.076 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 17:02:36.076 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 17:05:53.999 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 17:05:54.003 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 17:06:14.995 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 17:06:15.003 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 17:06:15.003 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 17:08:49.135 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 17:08:49.137 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 17:08:58.699 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 17:08:58.707 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 17:08:58.707 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 17:17:23.154 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 17:17:23.157 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 17:17:27.137 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 17:17:27.145 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 17:17:27.145 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 18:42:44.851 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 18:42:44.930 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 18:42:44.931 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 18:42:59.291 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 18:42:59.292 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 18:42:59.292 [main] ERROR r.o.r.server.ScreenCapturer - Failed to load OpenCV: DLL not found: C:\OTUS\RemoteDesktop\lib\native\opencv_core481.dll
+2026-01-11 18:54:22.752 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 18:54:22.828 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 18:54:22.829 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 18:54:31.869 [main] INFO  r.o.r.server.ScreenCapturer - Loading OpenCV from: C:\OTUS\RemoteDesktop\lib\native
+2026-01-11 18:54:31.869 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 18:54:31.872 [main] INFO  r.o.r.server.ScreenCapturer - OpenCV loaded successfully. Version: 4.8.1
+2026-01-11 18:54:32.031 [main] INFO  r.o.r.server.ScreenCapturer - ScreenCapturer запущен: 1920x1080
+2026-01-11 18:54:32.033 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 18:54:32.033 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Новое подключение от /192.168.1.57
+2026-01-11 18:54:32.049 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Клиент /192.168.1.57 авторизован
+2026-01-11 18:54:32.108 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 58 ms, compressed to 265790 bytes
+2026-01-11 18:54:32.227 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 60 ms, compressed to 259797 bytes
+2026-01-11 18:54:32.346 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 54 ms, compressed to 321176 bytes
+2026-01-11 18:54:32.445 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 42 ms, compressed to 337837 bytes
+2026-01-11 18:54:32.545 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 47 ms, compressed to 342232 bytes
+2026-01-11 18:54:32.661 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 55 ms, compressed to 343400 bytes
+2026-01-11 18:54:32.763 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 48 ms, compressed to 343774 bytes
+2026-01-11 18:54:32.878 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 56 ms, compressed to 343858 bytes
+2026-01-11 18:54:32.978 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 46 ms, compressed to 343747 bytes
+2026-01-11 18:54:33.094 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 54 ms, compressed to 343776 bytes
+2026-01-11 18:54:33.194 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 44 ms, compressed to 343857 bytes
+2026-01-11 18:54:33.311 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 52 ms, compressed to 343792 bytes
+2026-01-11 18:54:33.411 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 42 ms, compressed to 343595 bytes
+2026-01-11 18:54:33.512 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 48 ms, compressed to 343777 bytes
+2026-01-11 18:54:33.629 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 56 ms, compressed to 343759 bytes
+2026-01-11 18:54:33.727 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 44 ms, compressed to 343798 bytes
+2026-01-11 18:54:33.844 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 52 ms, compressed to 343750 bytes
+2026-01-11 18:54:33.946 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 44 ms, compressed to 343862 bytes
+2026-01-11 18:54:34.060 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 50 ms, compressed to 343788 bytes
+2026-01-11 18:54:34.160 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 39 ms, compressed to 343798 bytes
+2026-01-11 18:54:34.260 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - Frame captured in 43 ms, compressed to 343595 bytes
+2026-01-11 18:54:34.310 [Thread-0] INFO  r.o.r.server.ConnectionHandler - клиент отключился/192.168.1.57
+2026-01-11 18:54:34.315 [Thread-0] INFO  r.o.r.server.ConnectionHandler - подключение закрыто: /192.168.1.57
+2026-01-11 19:27:46.384 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 19:27:46.387 [main] DEBUG r.o.remotedesktop.server.ServerApp - ожидание нового подключения
+2026-01-11 19:28:03.025 [JavaFX Application Thread] INFO  r.o.r.client.ConnectionManager - ����������� � 192.168.1.57:5900
+2026-01-11 19:28:06.579 [JavaFX Application Thread] ERROR r.o.r.client.ConnectionManager - �� ������� ������������: Connection refused: connect
+2026-01-11 19:29:02.922 [main] INFO  r.o.remotedesktop.server.ServerApp - запуск сервера на порту 5900
+2026-01-11 19:29:02.925 [main] INFO  r.o.remotedesktop.server.ServerApp - сервер запущен. ждем подключения
+2026-01-11 19:29:10.605 [JavaFX Application Thread] INFO  r.o.r.client.ConnectionManager - ����������� � 192.168.1.57:5900
+2026-01-11 19:29:10.614 [main] INFO  r.o.remotedesktop.server.ServerApp - новое подключение от: /192.168.1.57
+2026-01-11 19:29:10.623 [main] DEBUG r.o.r.server.ScreenCapturer - Loaded: opencv_java481.dll
+2026-01-11 19:29:10.623 [main] INFO  r.o.r.server.ScreenCapturer - OpenCV загружен успешно
+2026-01-11 19:29:10.735 [main] INFO  r.o.r.server.ScreenCapturer - ScreenCapturer запущен: 1920x1080
+2026-01-11 19:29:10.736 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Новое подключение от /192.168.1.57
+2026-01-11 19:29:10.752 [Thread-0] INFO  r.o.r.server.ConnectionHandler - Клиент /192.168.1.57 авторизован
+2026-01-11 19:29:10.752 [JavaFX Application Thread] INFO  r.o.r.client.ConnectionManager - ����������� �������
+2026-01-11 19:29:10.823 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 70 мс, сжат до 242477 байт
+2026-01-11 19:29:10.943 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 51 мс, сжат до 302733 байт
+2026-01-11 19:29:11.043 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 319284 байт
+2026-01-11 19:29:11.161 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 50 мс, сжат до 323720 байт
+2026-01-11 19:29:11.264 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 324765 байт
+2026-01-11 19:29:11.377 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 50 мс, сжат до 325091 байт
+2026-01-11 19:29:11.477 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 41 мс, сжат до 325221 байт
+2026-01-11 19:29:11.577 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 47 мс, сжат до 325147 байт
+2026-01-11 19:29:11.694 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 55 мс, сжат до 325246 байт
+2026-01-11 19:29:11.794 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 46 мс, сжат до 325263 байт
+2026-01-11 19:29:11.911 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 55 мс, сжат до 325212 байт
+2026-01-11 19:29:12.010 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 325229 байт
+2026-01-11 19:29:12.127 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 52 мс, сжат до 325163 байт
+2026-01-11 19:29:12.227 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 43 мс, сжат до 325229 байт
+2026-01-11 19:29:12.344 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 62 мс, сжат до 325116 байт
+2026-01-11 19:29:12.443 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 40 мс, сжат до 325229 байт
+2026-01-11 19:29:12.542 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 325163 байт
+2026-01-11 19:29:12.659 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 53 мс, сжат до 325211 байт
+2026-01-11 19:29:12.762 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 325163 байт
+2026-01-11 19:29:12.876 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 325229 байт
+2026-01-11 19:29:12.976 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 39 мс, сжат до 325116 байт
+2026-01-11 19:29:13.076 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 325229 байт
+2026-01-11 19:29:13.192 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 51 мс, сжат до 325163 байт
+2026-01-11 19:29:13.293 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 325211 байт
+2026-01-11 19:29:13.408 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 325163 байт
+2026-01-11 19:29:13.509 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 39 мс, сжат до 325229 байт
+2026-01-11 19:29:13.609 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 325116 байт
+2026-01-11 19:29:13.727 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 53 мс, сжат до 325229 байт
+2026-01-11 19:29:13.825 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 41 мс, сжат до 325163 байт
+2026-01-11 19:29:13.926 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 48 мс, сжат до 325211 байт
+2026-01-11 19:29:14.027 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 40 мс, сжат до 325163 байт
+2026-01-11 19:29:14.125 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 325229 байт
+2026-01-11 19:29:14.242 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 52 мс, сжат до 325116 байт
+2026-01-11 19:29:14.342 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 325229 байт
+2026-01-11 19:29:14.458 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 325163 байт
+2026-01-11 19:29:14.558 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 40 мс, сжат до 325211 байт
+2026-01-11 19:29:14.658 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 325163 байт
+2026-01-11 19:29:14.758 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 36 мс, сжат до 325229 байт
+2026-01-11 19:29:14.859 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 43 мс, сжат до 325116 байт
+2026-01-11 19:29:14.975 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 51 мс, сжат до 325075 байт
+2026-01-11 19:29:15.075 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 324778 байт
+2026-01-11 19:29:15.192 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 51 мс, сжат до 325690 байт
+2026-01-11 19:29:15.293 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 325120 байт
+2026-01-11 19:29:15.409 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 50 мс, сжат до 325262 байт
+2026-01-11 19:29:15.508 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 40 мс, сжат до 325341 байт
+2026-01-11 19:29:15.609 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 325235 байт
+2026-01-11 19:29:15.709 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 37 мс, сжат до 325243 байт
+2026-01-11 19:29:15.809 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 325118 байт
+2026-01-11 19:29:15.926 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 53 мс, сжат до 325151 байт
+2026-01-11 19:29:16.025 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 325227 байт
+2026-01-11 19:29:16.142 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 51 мс, сжат до 325113 байт
+2026-01-11 19:29:16.242 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 40 мс, сжат до 325317 байт
+2026-01-11 19:29:16.342 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 324773 байт
+2026-01-11 19:29:16.459 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 52 мс, сжат до 325930 байт
+2026-01-11 19:29:16.559 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 41 мс, сжат до 325317 байт
+2026-01-11 19:29:16.675 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 325379 байт
+2026-01-11 19:29:16.776 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 325210 байт
+2026-01-11 19:29:16.892 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 325266 байт
+2026-01-11 19:29:16.991 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 39 мс, сжат до 325319 байт
+2026-01-11 19:29:17.093 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 48 мс, сжат до 325351 байт
+2026-01-11 19:29:17.192 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 37 мс, сжат до 325144 байт
+2026-01-11 19:29:17.292 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 325277 байт
+2026-01-11 19:29:17.392 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 325150 байт
+2026-01-11 19:29:17.492 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 38 мс, сжат до 325203 байт
+2026-01-11 19:29:17.592 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 43 мс, сжат до 325093 байт
+2026-01-11 19:29:17.709 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 50 мс, сжат до 325123 байт
+2026-01-11 19:29:17.812 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 311945 байт
+2026-01-11 19:29:17.910 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 313017 байт
+2026-01-11 19:29:18.030 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 56 мс, сжат до 448288 байт
+2026-01-11 19:29:18.130 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 440368 байт
+2026-01-11 19:29:18.247 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 54 мс, сжат до 439725 байт
+2026-01-11 19:29:18.365 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 60 мс, сжат до 441254 байт
+2026-01-11 19:29:18.463 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 441827 байт
+2026-01-11 19:29:18.578 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 50 мс, сжат до 442035 байт
+2026-01-11 19:29:18.695 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 56 мс, сжат до 442035 байт
+2026-01-11 19:29:18.796 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 47 мс, сжат до 442034 байт
+2026-01-11 19:29:18.911 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 51 мс, сжат до 442055 байт
+2026-01-11 19:29:19.012 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 43 мс, сжат до 442029 байт
+2026-01-11 19:29:19.128 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 50 мс, сжат до 442051 байт
+2026-01-11 19:29:19.228 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 40 мс, сжат до 442105 байт
+2026-01-11 19:29:19.344 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 442032 байт
+2026-01-11 19:29:19.462 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 56 мс, сжат до 442112 байт
+2026-01-11 19:29:19.562 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 45 мс, сжат до 442515 байт
+2026-01-11 19:29:19.679 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 52 мс, сжат до 442218 байт
+2026-01-11 19:29:19.779 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 44 мс, сжат до 442213 байт
+2026-01-11 19:29:19.898 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 53 мс, сжат до 442113 байт
+2026-01-11 19:29:19.994 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 42 мс, сжат до 442075 байт
+2026-01-11 19:29:20.113 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 53 мс, сжат до 442048 байт
+2026-01-11 19:29:20.212 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 43 мс, сжат до 442191 байт
+2026-01-11 19:29:20.328 [Thread-1] DEBUG r.o.r.server.ScreenCapturer - кадр захвачен за 49 мс, сжат до 444963 байт
+2026-01-11 19:29:20.350 [Thread-0] INFO  r.o.r.server.ConnectionHandler - клиент отключился/192.168.1.57
+2026-01-11 19:29:20.350 [JavaFX Application Thread] INFO  r.o.r.client.ConnectionManager - ��������� �� �������
+2026-01-11 19:29:20.389 [Thread-0] INFO  r.o.r.server.ConnectionHandler - подключение закрыто: /192.168.1.57

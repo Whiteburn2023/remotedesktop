@@ -47,7 +47,7 @@ public class ClientController {
             screenView.requestFocus();
         });
 
-        hostField.setText("192.168.1.104");  //hostField.setText("localhost");
+        hostField.setText("192.168.1.57");  //hostField.setText("localhost");
         portField.setText("5900");
         usernameField.setText("admin");
         passwordField.setText("password");
@@ -184,10 +184,6 @@ public class ClientController {
         if (button == MouseButton.PRIMARY) return 1;
         if (button == MouseButton.MIDDLE) return 2;
         if (button == MouseButton.SECONDARY) return 3;
-
-//        if (event.isPrimaryButtonDown()) return 1; //левая
-//        if (event.isMiddleButtonDown()) return 2;
-//        if (event.isSecondaryButtonDown()) return 3; //правая
         return 1;
     }
 
@@ -197,10 +193,6 @@ public class ClientController {
         if (button == MouseButton.PRIMARY) return "LEFT";
         if (button == MouseButton.MIDDLE) return "MIDDLE";
         if (button == MouseButton.SECONDARY) return "RIGHT";
-
-//        if (event.isPrimaryButtonDown()) return "LEFT";
-//        if (event.isMiddleButtonDown()) return  "MIDDLE";
-//        if (event.isSecondaryButtonDown()) return "RIGHT";
         return "UNKNOWN";
     }
 

@@ -78,6 +78,7 @@ public class ConnectionHandler extends Thread {
 
             authenticated = success;
             return success;
+
         } catch (Exception e) {
             logger.error("ошибка авторизации {}", e.getMessage());
             return false;
@@ -116,12 +117,10 @@ public class ConnectionHandler extends Thread {
                         params[i] = input.readInt();
                     }
                     inputExecutor.executeCommand(cmd, params);
-                } else if (obj instanceof String) {
-                    logger.info("Сообщение от клиента: {}", obj);
                 }
             }
         } catch (EOFException e) {
-            logger.info("Клиент отключился{}", clientSocket.getInetAddress());
+            logger.info("клиент отключился{}", clientSocket.getInetAddress());
         } catch (Exception e) {
             logger.error("ошибка приема команд {}", e.getMessage());
         }
