@@ -1,25 +1,23 @@
 package ru.otus.remotedesktop.client;
 
-import ru.otus.remotedesktop.common.Command;
-import ru.otus.remotedesktop.common.ScreenFrame;
-
 import javafx.application.Platform;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
+import org.bytedeco.javacv.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.ByteArrayInputStream;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.concurrent.atomic.AtomicInteger;
-
+import java.awt.image.BufferedImage;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class ClientController {
+    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
+
     @FXML private BorderPane mainPane;
     @FXML private ImageView screenView;
     @FXML private TextField hostField;
@@ -28,138 +26,192 @@ public class ClientController {
     @FXML private PasswordField passwordField;
     @FXML private Button connectButton;
     @FXML private Label statusLabel;
+    @FXML private Label fpsLabel;
+    @FXML private CheckBox enableVideoCheck;
 
     private ConnectionManager connectionManager;
+    private VideoClient videoClient;
+    private Java2DFrameConverter converter;
     private double scaleX = 1.0;
     private double scaleY = 1.0;
-
-    /** Для логирования mouse */
-    private PrintWriter logWriter;
-    private final DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
-    private final AtomicInteger eventCounter = new AtomicInteger(0);
-    private String logFileName;
+    private Thread statsThread;
+    private final AtomicLong frameCount = new AtomicLong(0);
+    private long lastStatTime = System.currentTimeMillis();
 
     @FXML
     public void initialize() {
-        screenView.setFocusTraversable(true); //фокус, ловим события клавиатуры
+        screenView.setFocusTraversable(true);
+        screenView.setOnMouseClicked(event -> screenView.requestFocus());
 
-        screenView.setOnMouseClicked(event -> {
-            screenView.requestFocus();
-        });
-
-        hostField.setText("192.168.1.57");  //hostField.setText("localhost");
+        hostField.setText("localhost");
         portField.setText("5900");
         usernameField.setText("admin");
         passwordField.setText("password");
+        statusLabel.setText("Отключено");
 
-        statusLabel.setText("отключено");
+        enableVideoCheck.setSelected(true);
 
-        /** Для логирования mouse */
-        createLogFile();
-        logMessage("== MOUSE ==");
+        converter = new Java2DFrameConverter();
     }
-        /** Для логирования mouse */
-        private void createLogFile() {
-            try {
-                LocalDateTime now = LocalDateTime.now();
-                logFileName = String.format("mouse_log_%s.txt", now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss")));
-                logWriter = new PrintWriter(new FileWriter(logFileName, true));
-                logWriter.println("=".repeat(60));
-                logWriter.printf("начало:  %s%n", now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-                logWriter.println("=".repeat(60));
-                logWriter.flush();
-                System.out.println("файл логов " + logFileName);
-            } catch (Exception e) {
-                System.err.println("ошибка создания файла" + e.getMessage());
-            }
-
-        }
-    /** Для логирования mouse */
-
-    private void logMessage(String message) {
-        String timestamp = LocalDateTime.now().format(timeFormatter);
-        String logEntry = String.format("[%s] %s", timestamp, message);
-
-        System.out.println(logEntry);
-
-        if (logWriter != null) {
-            logWriter.println(logEntry);
-            logWriter.flush();
-        }
-    }
-
 
     @FXML
     private void handleConnect() {
         if (connectionManager != null && connectionManager.isConnected()) {
-            connectionManager.disconnect();
-            connectButton.setText("подключиться");
-            statusLabel.setText("отключено");
-            screenView.setImage(null);
+            disconnect();
         } else {
-            try {
-                String host = hostField.getText();
-                int port = Integer.parseInt(portField.getText());
-                String username = usernameField.getText();
-                String password = passwordField.getText();
-
-                connectionManager = new ConnectionManager();
-                boolean success = connectionManager.connect(host, port, username, password);
-
-                if (success) {
-                    connectButton.setText("отключиться");
-                    statusLabel.setText("подключено к " + host + " : " + port);
-
-                    connectionManager.startReceivingFrames(this::updateScreen);
-                } else {
-                    showAlert("ошибка" ,"неверные логин/пароль или сервер недоступен");
-                    statusLabel.setText("ошибка подключения");
-                }
-            } catch (NumberFormatException e) {
-                showAlert("ошибка", "порт должен быть числом");
-            }
+            connect();
         }
     }
 
-    public void updateScreen(ScreenFrame frame) {
-        ByteArrayInputStream bis = new ByteArrayInputStream(frame.getImageData());
-        Image image = new Image(bis);
+    private void connect() {
+        try {
+            String host = hostField.getText();
+            int controlPort = Integer.parseInt(portField.getText());
+            int videoPort = controlPort + 1; // Видеопорт на +1 от управляющего
+            String username = usernameField.getText();
+            String password = passwordField.getText();
+
+            // 1. Подключаемся для управления
+            connectionManager = new ConnectionManager();
+            boolean controlConnected = connectionManager.connect(host, controlPort, username, password);
+
+            if (!controlConnected) {
+                showAlert("Ошибка", "Не удалось подключиться для управления");
+                return;
+            }
+
+            // 2. Подключаемся для видео (если включено)
+            if (enableVideoCheck.isSelected()) {
+                videoClient = new VideoClient(frame -> updateVideoFrame(frame));
+                boolean videoConnected = videoClient.connect(host, videoPort);
+
+                if (!videoConnected) {
+                    showAlert("Предупреждение", "Видеопоток недоступен, работает только управление");
+                    // Продолжаем без видео
+                }
+            }
+
+            updateUIForConnectedState();
+            startStatsThread();
+
+        } catch (NumberFormatException e) {
+            showAlert("Ошибка", "Порт должен быть числом");
+        } catch (Exception e) {
+            showAlert("Ошибка подключения", e.getMessage());
+            logger.error("Ошибка подключения: {}", e.getMessage());
+        }
+    }
+
+    private void updateVideoFrame(Frame frame) {
+        frameCount.incrementAndGet();
 
         Platform.runLater(() -> {
-            screenView.setImage(image);
+            try {
+                // Конвертируем Frame из JavaCV в JavaFX Image
+                BufferedImage bufferedImage = converter.convert(frame);
+                if (bufferedImage != null) {
+                    Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                    screenView.setImage(image);
 
-            if (image.getWidth() > 0 && image.getHeight() > 0) {
-                scaleX = frame.getWidth() / screenView.getBoundsInLocal().getWidth();
-                scaleY = frame.getHeight() / screenView.getBoundsInLocal().getHeight();
+                    // Обновляем коэффициенты масштабирования
+                    if (image.getWidth() > 0 && image.getHeight() > 0) {
+                        double viewWidth = screenView.getBoundsInLocal().getWidth();
+                        double viewHeight = screenView.getBoundsInLocal().getHeight();
+
+                        if (viewWidth > 0 && viewHeight > 0) {
+                            scaleX = image.getWidth() / viewWidth;
+                            scaleY = image.getHeight() / viewHeight;
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                logger.error("Ошибка конвертации кадра: {}", e.getMessage());
             }
         });
     }
 
-    /** mouse */
+    private void disconnect() {
+        if (videoClient != null) {
+            videoClient.disconnect();
+        }
 
+        if (connectionManager != null) {
+            connectionManager.disconnect();
+        }
+
+        updateUIForDisconnectedState();
+        stopStatsThread();
+
+        Platform.runLater(() -> {
+            screenView.setImage(null);
+            statusLabel.setText("Отключено");
+        });
+    }
+
+    private void startStatsThread() {
+        stopStatsThread();
+        statsThread = new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                try {
+                    Thread.sleep(1000);
+                    long currentTime = System.currentTimeMillis();
+                    long frames = frameCount.get();
+                    double fps = frames * 1000.0 / (currentTime - lastStatTime);
+
+                    Platform.runLater(() -> {
+                        fpsLabel.setText(String.format("FPS: %.1f", fps));
+                        statusLabel.setText(String.format("Подключено (FPS: %.1f)", fps));
+                    });
+
+                    frameCount.set(0);
+                    lastStatTime = currentTime;
+                } catch (InterruptedException e) {
+                    break;
+                }
+            }
+        });
+        statsThread.setDaemon(true);
+        statsThread.start();
+    }
+
+    private void stopStatsThread() {
+        if (statsThread != null && statsThread.isAlive()) {
+            statsThread.interrupt();
+        }
+    }
+
+    private void updateUIForConnectedState() {
+        Platform.runLater(() -> {
+            connectButton.setText("Отключиться");
+            statusLabel.setText("Подключено");
+            statusLabel.setStyle("-fx-text-fill: green;");
+        });
+    }
+
+    private void updateUIForDisconnectedState() {
+        Platform.runLater(() -> {
+            connectButton.setText("Подключиться");
+            statusLabel.setText("Отключено");
+            statusLabel.setStyle("-fx-text-fill: red;");
+            fpsLabel.setText("FPS: 0.0");
+        });
+    }
+
+    // Обработчики мыши и клавиатуры остаются без изменений
     @FXML
     private void handleMouseMoved(MouseEvent event) {
         if (connectionManager != null && connectionManager.isConnected()) {
             int x = (int) (event.getX() * scaleX);
             int y = (int) (event.getY() * scaleY);
-            connectionManager.sendCommand(Command.MOUSE_MOVE, x, y);
+            connectionManager.sendCommand(ru.otus.remotedesktop.common.Command.MOUSE_MOVE, x, y);
         }
     }
 
     @FXML
-    private void handleMousePressed(MouseEvent event){
-        if (connectionManager != null && connectionManager.isConnected()){
+    private void handleMousePressed(MouseEvent event) {
+        if (connectionManager != null && connectionManager.isConnected()) {
             int button = getMouseButton(event);
-            connectionManager.sendCommand(Command.MOUSE_PRESS, button);
-
-
-            /** Для логирования mouse */
-            int eventNum = eventCounter.incrementAndGet();
-            String buttonName = getMouseButtonName(event);
-            logMessage(String.format("#%04d MOUSE PRESS: %s (code=%d) at local(%d,%d) remote(%d,%d)",
-                    eventNum, buttonName, button,
-                    (int)event.getX(), (int)event.getY(),
-                    (int)(event.getX() * scaleX), (int)(event.getY() * scaleY)));
+            connectionManager.sendCommand(ru.otus.remotedesktop.common.Command.MOUSE_PRESS, button);
         }
     }
 
@@ -167,15 +219,31 @@ public class ClientController {
     private void handleMouseReleased(MouseEvent event) {
         if (connectionManager != null && connectionManager.isConnected()) {
             int button = getMouseButton(event);
-            connectionManager.sendCommand(Command.MOUSE_RELEASE, button);
+            connectionManager.sendCommand(ru.otus.remotedesktop.common.Command.MOUSE_RELEASE, button);
         }
     }
 
     @FXML
     private void handleMouseWheel(ScrollEvent event) {
         if (connectionManager != null && connectionManager.isConnected()) {
-            int wheelAmt = (int) event.getDeltaY();         //если колесико вертит не в ту сторону, то поставить -
-            connectionManager.sendCommand(Command.MOUSE_WHEEL, wheelAmt);
+            int wheelAmt = (int) event.getDeltaY();
+            connectionManager.sendCommand(ru.otus.remotedesktop.common.Command.MOUSE_WHEEL, wheelAmt);
+        }
+    }
+
+    @FXML
+    private void handleKeyPressed(KeyEvent event) {
+        if (connectionManager != null && connectionManager.isConnected()) {
+            int keyCode = event.getCode().getCode();
+            connectionManager.sendCommand(ru.otus.remotedesktop.common.Command.KEY_PRESS, keyCode);
+        }
+    }
+
+    @FXML
+    private void handleKeyReleased(KeyEvent event) {
+        if (connectionManager != null && connectionManager.isConnected()) {
+            int keyCode = event.getCode().getCode();
+            connectionManager.sendCommand(ru.otus.remotedesktop.common.Command.KEY_RELEASE, keyCode);
         }
     }
 
@@ -187,34 +255,6 @@ public class ClientController {
         return 1;
     }
 
-    /** Для логирования mouse */
-    private String getMouseButtonName(MouseEvent event) {
-        MouseButton button = event.getButton();
-        if (button == MouseButton.PRIMARY) return "LEFT";
-        if (button == MouseButton.MIDDLE) return "MIDDLE";
-        if (button == MouseButton.SECONDARY) return "RIGHT";
-        return "UNKNOWN";
-    }
-
-
-    /** keyboard */
-
-    @FXML
-    private void handleKeyPressed(KeyEvent event) {
-        if (connectionManager != null && connectionManager.isConnected()) {
-            int keyCode = event.getCode().getCode();
-            connectionManager.sendCommand(Command.KEY_PRESS, keyCode);
-        }
-    }
-
-    @FXML
-    private void handleKeyReleased(KeyEvent event) {
-        if (connectionManager != null && connectionManager.isConnected()) {
-            int keyCode = event.getCode().getCode();
-            connectionManager.sendCommand(Command.KEY_RELEASE, keyCode);
-        }
-    }
-
     private void showAlert(String title, String message) {
         Platform.runLater(() -> {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -224,5 +264,4 @@ public class ClientController {
             alert.showAndWait();
         });
     }
-
 }

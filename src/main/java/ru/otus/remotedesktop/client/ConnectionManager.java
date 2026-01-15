@@ -1,7 +1,6 @@
 package ru.otus.remotedesktop.client;
 
 import ru.otus.remotedesktop.common.AuthRequest;
-import ru.otus.remotedesktop.common.ScreenFrame;
 import ru.otus.remotedesktop.common.Command;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Consumer;
 
 public class ConnectionManager {
     private static final Logger logger = LoggerFactory.getLogger(ConnectionManager.class);
@@ -18,14 +16,13 @@ public class ConnectionManager {
     private ObjectOutputStream output;
     private ObjectInputStream input;
     private final AtomicBoolean connected = new AtomicBoolean(false);
-    private Thread receiverThread;
-    private Consumer<ScreenFrame> frameConsumer;
+    // Убрали frameConsumer и receiverThread, так как видео идет отдельным потоком
 
     public ConnectionManager() {
     }
 
     public boolean connect(String host, int port, String username, String password) {
-        logger.info("подключение к {}:{}", host, port);
+        logger.info("Подключение к {}:{}", host, port);
         try {
             socket = new Socket(host, port);
             output = new ObjectOutputStream(socket.getOutputStream());
@@ -38,59 +35,31 @@ public class ConnectionManager {
             output.flush();
 
             boolean authSuccess = input.readBoolean();
-            if (!authSuccess){
-                logger.warn("сервер отклонил авторизацию");
+            if (!authSuccess) {
+                logger.warn("Сервер отклонил авторизацию");
                 disconnect();
                 return false;
             }
 
             connected.set(true);
-            logger.info("подключение успешно");
+            logger.info("Подключение успешно");
             return true;
 
         } catch (java.net.SocketTimeoutException e) {
-            logger.error("таймаут подключения: сервер не ответил за 5 секунд");
+            logger.error("Таймаут подключения: сервер не ответил за 5 секунд");
             return false;
         } catch (java.net.ConnectException e) {
-            logger.error("не удалось подключиться: {}", e.getMessage());
+            logger.error("Не удалось подключиться: {}", e.getMessage());
             return false;
         } catch (EOFException e) {
-            logger.error("сервер закрыл соединение");
+            logger.error("Сервер закрыл соединение");
             return false;
         } catch (IOException e) {
-            logger.error("ошибка ввода/вывода: {}", e.getMessage());
+            logger.error("Ошибка ввода/вывода: {}", e.getMessage());
             return false;
         } catch (Exception e) {
-            logger.error("неизвестная ошибка: {}", e.getMessage());
+            logger.error("Неизвестная ошибка: {}", e.getMessage());
             return false;
-        }
-    }
-
-    public void startReceivingFrames(Consumer<ScreenFrame> frameConsumer) {
-        this.frameConsumer = frameConsumer;
-        receiverThread = new Thread(this::receiveFrames);
-        receiverThread.setDaemon(true);
-        receiverThread.start();
-    }
-
-    private void receiveFrames() {
-        try {
-            while (connected.get()) {
-                Object obj = input.readObject();
-                if (obj instanceof ScreenFrame) {
-                    ScreenFrame frame = (ScreenFrame) obj;
-                    if (frameConsumer != null) {
-                        frameConsumer.accept(frame);
-                    }
-                }
-            }
-        } catch (EOFException e) {
-            logger.info("сервер отключился");
-        } catch (IOException | ClassNotFoundException e) {
-            if (connected.get()) {
-                logger.error("ошибка приема кадров {}", e.getMessage());
-                disconnect();
-            }
         }
     }
 
@@ -109,24 +78,22 @@ public class ConnectionManager {
                 output.flush();
             }
         } catch (IOException e) {
-            logger.error("ошибка отправки команды {}", e.getMessage());
+            logger.error("Ошибка отправки команды {}", e.getMessage());
             disconnect();
         }
     }
 
     public void disconnect() {
         connected.set(false);
-        if (receiverThread != null && receiverThread.isAlive()) {
-            receiverThread.interrupt();
-        }
+
         try {
             if (input != null) input.close();
             if (output != null) output.close();
             if (socket != null) socket.close();
         } catch (IOException e) {
-            logger.error("ошибка при отключении {}", e.getMessage());
+            logger.error("Ошибка при отключении {}", e.getMessage());
         }
-        logger.info("отключено от сервера");
+        logger.info("Отключено от сервера");
     }
 
     public boolean isConnected() {

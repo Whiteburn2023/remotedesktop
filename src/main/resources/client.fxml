@@ -7,19 +7,27 @@
 <BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ru.otus.remotedesktop.client.ClientController">
+
     <top>
         <ToolBar>
-            <Label text="хост:"/>
+            <Label text="Хост:"/>
             <TextField fx:id="hostField" prefWidth="120"/>
-            <Label text="порт:"/>
+            <Label text="Порт:"/>
             <TextField fx:id="portField" prefWidth="60"/>
-            <Label text="логин:"/>
+            <Label text="Логин:"/>
             <TextField fx:id="usernameField" prefWidth="100"/>
-            <Label text="пароль:"/>
+            <Label text="Пароль:"/>
             <PasswordField fx:id="passwordField" prefWidth="100"/>
-            <Button fx:id="connectButton" text="подключиться" onAction="#handleConnect"/>
+            <Button fx:id="connectButton" text="Подключиться" onAction="#handleConnect"/>
+
             <Separator orientation="VERTICAL"/>
-            <Label fx:id="statusLabel" text="статус"/>
+
+            <CheckBox fx:id="enableVideoCheck" text="Видео" selected="true"/>
+
+            <Separator orientation="VERTICAL"/>
+
+            <Label fx:id="fpsLabel" text="FPS: 0.0" prefWidth="80"/>
+            <Label fx:id="statusLabel" text="Отключено" prefWidth="200"/>
         </ToolBar>
     </top>
 

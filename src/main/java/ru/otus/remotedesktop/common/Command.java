@@ -9,6 +9,6 @@ public enum Command implements Serializable {
     KEY_PRESS,
     KEY_RELEASE,
     MOUSE_WHEEL,
-    REQUEST_SCREEN, // Запрос нового кадра
-    AUTH_REQUEST    // Запрос авторизации
+    SET_STREAM_PARAMS,
+    STREAM_CONTROL
 }

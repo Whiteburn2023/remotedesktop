@@ -10,41 +10,63 @@ import java.net.Socket;
 
 public class ServerApp {
     private static final Logger logger = LoggerFactory.getLogger(ServerApp.class);
-    private static final int DEFAULT_PORT = 5900;
+    private static final int CONTROL_PORT = 5900;
+    private static final int VIDEO_PORT = 5901;
 
     public static void main(String[] args) {
-        int port = DEFAULT_PORT;
-        if (args.length > 0) {
-            try {
-                port = Integer.parseInt(args[0]);
-            } catch (NumberFormatException e) {
-                logger.error("неверный формат порта: {}. используется порт по умолчанию: {}", args[0], DEFAULT_PORT, e);
-            }
+        logger.info("Запуск сервера удаленного рабочего стола");
+        logger.info("Порт управления: {}, порт видео: {}", CONTROL_PORT, VIDEO_PORT);
+
+        try {
+            // Запускаем сервер управления
+            Thread controlServer = new Thread(() -> startControlServer());
+            controlServer.start();
+
+            // Запускаем сервер видео
+            Thread videoServer = new Thread(() -> startVideoServer());
+            videoServer.start();
+
+            // Ждем завершения
+            controlServer.join();
+            videoServer.join();
+
+        } catch (Exception e) {
+            logger.error("Критическая ошибка сервера: {}", e.getMessage());
         }
+    }
 
-        logger.info("запуск сервера на порту {}", port);
-
-
-        try (ServerSocket serverSocket = new ServerSocket(port)) {
-            logger.info("сервер запущен. ждем подключения");
+    private static void startControlServer() {
+        try (ServerSocket serverSocket = new ServerSocket(CONTROL_PORT)) {
+            logger.info("Сервер управления запущен на порту {}", CONTROL_PORT);
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                logger.info("новое подключение от: {}", clientSocket.getInetAddress());
+                logger.info("Новое управляющее подключение от: {}", clientSocket.getInetAddress());
 
                 try {
                     new ConnectionHandler(clientSocket).start();
-                } catch (Exception e) {
-                    logger.error("ошибка создания ConnectionHandler: {}", e.getMessage());
+                } catch (AWTException e) {
+                    logger.error("Ошибка создания ConnectionHandler: {}", e.getMessage());
                     clientSocket.close();
                 }
             }
         } catch (IOException e) {
-            logger.error("критическая ошибка сервера на порту {}: {}", port, e.getMessage());
-        } catch (Exception e) {
-            logger.error("неожиданная ошибка в работе сервера", e);
+            logger.error("Ошибка сервера управления: {}", e.getMessage());
         }
-
     }
 
+    private static void startVideoServer() {
+        try (ServerSocket serverSocket = new ServerSocket(VIDEO_PORT)) {
+            logger.info("Сервер видео запущен на порту {}", VIDEO_PORT);
+
+            while (true) {
+                Socket videoSocket = serverSocket.accept();
+                logger.info("Новое видеоподключение от: {}", videoSocket.getInetAddress());
+
+                new VideoConnectionHandler(videoSocket).start();
+            }
+        } catch (IOException e) {
+            logger.error("Ошибка сервера видео: {}", e.getMessage());
+        }
+    }
 }
