@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.otus.remotedesktop.client.ClientController">
+
+    <top>
+        <ToolBar>
+            <Label text="Хост:"/>
+            <TextField fx:id="hostField" prefWidth="120"/>
+            <Label text="Порт:"/>
+            <TextField fx:id="portField" prefWidth="60"/>
+            <Label text="Логин:"/>
+            <TextField fx:id="usernameField" prefWidth="100"/>
+            <Label text="Пароль:"/>
+            <PasswordField fx:id="passwordField" prefWidth="100"/>
+            <Button fx:id="connectButton" text="Подключиться" onAction="#handleConnect"/>
+
+            <Separator orientation="VERTICAL"/>
+
+            <CheckBox fx:id="enableVideoCheck" text="Видео" selected="true"/>
+
+            <Separator orientation="VERTICAL"/>
+
+            <Label fx:id="fpsLabel" text="FPS: 0.0" prefWidth="80"/>
+            <Label fx:id="statusLabel" text="Отключено" prefWidth="200"/>
+        </ToolBar>
+    </top>
+
+    <center>
+        <StackPane>
+            <ImageView fx:id="screenView"
+                       fitWidth="800"
+                       fitHeight="600"
+                       preserveRatio="true"
+                       onMouseMoved="#handleMouseMoved"
+                       onMousePressed="#handleMousePressed"
+                       onMouseReleased="#handleMouseReleased"
+                       onMouseDragged="#handleMouseMoved"
+                       onScroll="#handleMouseWheel"
+                       onKeyPressed="#handleKeyPressed"
+                       onKeyReleased="#handleKeyReleased"/>
+        </StackPane>
+    </center>
+
+</BorderPane>
